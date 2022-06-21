@@ -5,4 +5,18 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow: visible;
+    padding: 5px 10px;
+    align-content: space-between;
+
+    background-color: rgba(255, 0, 0, 0.5);
+
+    > div {
+        width: 270px;
+        margin: 12px 15px;
+        flex: 1 0 auto;
+    }
+
+    > div:first-child {
+        flex-grow: 10;
+    }
 }

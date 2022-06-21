@@ -1,9 +1,9 @@
 import './style.scss'
 
-function Button() {
+function Button({handleBack}) {
     return (
-        <button className="button button-primary">
-            <i className="fa fa-chevron-right"> </i>Find out more
+        <button className="card--button button-primary" onClick={handleBack}>
+            <i className="fa fa-chevron-right"></i>
         </button>
     )
 }

@@ -3,16 +3,13 @@ import Button from "./Button"
 import './style.scss'
 
 
-function CardBody({ title, text }) {
+function CardBody(props) {
     return (
         <div className="card-body">
-            <p className="date">March 20 2015</p>
-            
-            <h2>{title}</h2>
-            
-            <p className="body-content">{text}</p>
-            
-            <Button />
+            <p className="date">{props.date}</p>
+            <h2>{props.title}</h2>
+            <p className="body-content">{props.text}</p>
+            <Button handleBack={props.handleBack} />
         </div>
     )
 }
