@@ -115,7 +115,7 @@ Card grows to full screen
   transform: translate(-50%, -50%);
 
   .card-body {
-    height: 50% !important;
+    height: 100% !important;
   }
 
   .card-header {
@@ -150,8 +150,11 @@ Card grows to full screen
 
 .slide-container {
   width: 70%;
+  // height: auto;
   margin: auto;
   height: 100%;
+  // border: solid blue 2px;
+
  
     div {
       width: 100%;
@@ -160,4 +163,14 @@ Card grows to full screen
       background-size: contain;
       background-repeat: no-repeat;
     }
+}
+
+
+
+@media only screen and (max-width: 760px) {
+  .card--clicked {
+    .card-header {
+      height: 200px;
+    }
+  }
 }

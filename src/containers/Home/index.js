@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../../components/Card'
+import Navbar from '../../components/Navbar';
 
 import './style.scss'
 
@@ -16,14 +17,16 @@ export default function Stories() {
   const date = "26 March 2022";
 
   return (
-    <div className='stories-row'>
-      <Card images={images} date={date} title={title} text={text}/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-    </div>
-
+    <>
+     <Navbar></Navbar>
+      <div className='stories-row'>
+        <Card images={images} date={date} title={title} text={text}/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+      </div>
+    </>
   )
 }

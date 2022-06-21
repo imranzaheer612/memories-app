@@ -1,22 +1,29 @@
 
-
 .stories-row {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: visible;
-    padding: 5px 10px;
+    padding: 90px 10px;
     align-content: space-between;
 
     background-color: rgba(255, 0, 0, 0.5);
 
     > div {
-        width: 270px;
         margin: 12px 15px;
-        flex: 1 0 auto;
+        flex: 1 1 auto;
     }
 
     > div:first-child {
         flex-grow: 10;
     }
 }
+
+@media only screen and (max-width: 440px) {
+    .stories-row {
+        padding-top: 130px ;
+    }
+  }
