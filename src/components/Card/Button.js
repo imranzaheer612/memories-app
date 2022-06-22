@@ -3,7 +3,7 @@ import './style.scss'
 function Button({handleBack}) {
     return (
         <button className="card--button button-primary" onClick={handleBack}>
-            <i className="fa fa-chevron-right"></i>
+            {/* <i className="fa fa-chevron-right"></i> */}
         </button>
     )
 }

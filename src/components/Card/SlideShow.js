@@ -10,8 +10,10 @@ export default function SlideShow({images}) {
     <div className="slide-container">
       <Fade>
         {images.map((fadeImage, index)=> (
-            <div className="each-slide" key={index}>
-              <div style={{'backgroundImage': `url(${fadeImage})`}}></div>
+            <div key={index}>
+              <div className="each-slide">
+                <img src={fadeImage}/>
+              </div>
             </div>
         ))} 
       </Fade>

@@ -22,7 +22,6 @@
 .nav__opened {
     background-color: #ebebeb;
     height: 100%;
-    flex-direction: column;
     justify-content: center;
 
     .nav__button {
@@ -45,8 +44,8 @@
 
 
 .nav__button {
-    background-color: #EA4C89;
-    border-radius: 8px;
+    background-color: #1976d2;
+    border-radius: 4px;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 14px;
@@ -54,11 +53,12 @@
     padding: 10px 16px;
     margin: 2px 50px;
     text-align: center;
-    border: none    ;
+    border: none;
+    text-transform: uppercase;
   }
 
   .nav__button:hover {
-    background-color: #F082AC;
+    opacity: 80%;;
   }
 
 
@@ -66,5 +66,9 @@
     .nav {
         height: 100px;
         justify-content: center;
+    }
+
+    .nav__opened {
+        height: 100%;
     }
   }
