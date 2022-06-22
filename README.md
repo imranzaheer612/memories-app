@@ -12,11 +12,17 @@ This project is in work.
 
 ## Overview
 
-Displaying all saved stories at the home screen
-![](./assets/home.jpg)
+Displaying all saved stories on the home screen
+
+![home](./assets/home.jpg)
 
 Add a new story
-![](./assets/form.jpg)
+
+![mui form](./assets/form.jpg)
+
+View your stories
+
+![slide show](./assets/slides.jpg)
 
 
 
