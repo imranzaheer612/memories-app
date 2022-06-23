@@ -1,29 +1,27 @@
-
 .stories-row {
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow: visible;
-    padding: 90px 10px;
-    align-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: visible;
+  padding: 90px 10px;
+  align-content: space-between;
 
-    // background-color: rgba(255, 0, 0, 0.5);
+  > div {
+    margin: 20px 15px;
+    flex: 1 1 300px;
+  }
 
-    > div {
-        margin: 20px 15px;
-        flex: 1 1 auto;
-    }
-
-    > div:first-child {
-        flex-grow: 10;
-    }
+  > div:first-child {
+    flex-grow: 10;
+    flex-basis: 500px;
+  }
 }
 
 @media only screen and (max-width: 440px) {
-    .stories-row {
-        padding-top: 130px ;
-    }
+  .stories-row {
+    padding-top: 130px;
   }
+}

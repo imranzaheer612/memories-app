@@ -1,7 +1,7 @@
 /* Design inspiration:  https://dribbble.com/shots/1978243-Latest-News */
 
 $blue: #341cac;
-$card-shadow:
+$card-shadow: 
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   0 6.7px 5.3px rgba(0, 0, 0, 0.048),
   0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -17,17 +17,17 @@ $card-shadow:
 
   box-shadow: $card-shadow;
   transition: .25s;
-  
+
   &:hover {
     box-shadow: 5px 5px 40px 20px darken(hsla(250, 24%, 72%, 0.623), 10%);
     cursor: pointer;
-    
+
     .button-primary {
       transform: translate(10px, 0);
     }
   }
 
-   /*Animations*/
+  /*Animations*/
   //  -webkit-transition: all 1s ease;
   //  -moz-transition: all 1s ease;
   //  -o-transition: all 1s ease;
@@ -39,9 +39,9 @@ $card-shadow:
   width: 100%;
   box-sizing: border-box;
   padding: 15px;
-  width:100%;
-  background-size:cover;
-  color:#fff;
+  width: 100%;
+  background-size: cover;
+  color: #fff;
 }
 
 .card-header--title {
@@ -51,8 +51,8 @@ $card-shadow:
 
 .card-body {
   padding: 15px;
-  background-color:#fff;
-  width:100%;
+  background-color: #fff;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
@@ -73,29 +73,29 @@ $card-shadow:
   border: none;
   box-shadow: none;
   font-family: inherit;
-  background-color:transparent;
+  background-color: transparent;
   color: $blue;
   font-size: 15px;
-  transition:.25s;
+  transition: .25s;
   z-index: 99;
-  
-  i{
-    padding-right:4px;
+
+  i {
+    padding-right: 4px;
   }
 }
 
 
 .button-primary::after {
-    content:'Find out more';
+  content: 'Find out more';
 }
 
 
 .designer-link {
-  color:#fff;
-  text-align:center;
+  color: #fff;
+  text-align: center;
   font-size: 12px;
   text-decoration: none;
-  display:block;
+  display: block;
 }
 
 /**
@@ -103,16 +103,17 @@ Card clicked animation
 Card grows to full screen
 */
 
-.card--clicked{
+.card--clicked {
   display: flex;
   flex-direction: column;
   flex: 1 1 0px;
+  overflow: scroll;
 
-  z-index: 10; 
-  width: 100% !important; 
-  height: 100% !important; 
+  z-index: 10;
+  width: 100% !important;
+  height: 100% !important;
   margin: 0px !important;
- 
+
   position: fixed;
   top: 50%;
   left: 50%;
@@ -146,7 +147,8 @@ Card grows to full screen
   }
 
   .button-primary:hover {
-    opacity: 80%;;
+    opacity: 80%;
+    ;
   }
 
   .button-primary::after {
@@ -158,16 +160,16 @@ Card grows to full screen
   width: 70%;
   margin: auto;
   height: 100%;
- 
+
   .each-slide {
     background-color: black;
   }
 
   div {
-      width: 100%;
-      height: 100%;
-      margin: auto;
-    }
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
 
   img {
     max-width: 100%;

@@ -30,7 +30,7 @@ function Card({images, title, text, date}) {
     }
 
     const headerProps = {
-        images : images, 
+        images : (images.length ? images : Card.defaultProps.images),
         cardOpened : isOpened
     }
 
