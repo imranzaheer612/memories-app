@@ -3,6 +3,7 @@ import { TextField } from "@material-ui/core";
 import Button from "@mui/material/Button";
 import { Typography, Paper, Grid, CssBaseline } from "@material-ui/core";
 import "./style.scss";
+import postStory from "../../services/stories/postStory";
 
 
 
@@ -17,10 +18,12 @@ export default function NewStory({ handleBack }) {
   const [formValues, setFormValues] = useState(defaultValues);
 
   /**
-   * Story uploading data
+   * Story uploading date
    */
-  const current = new Date();
-  const currentDate = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+  const currentDate = () => {
+    let current = new Date();
+    return`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+  }
 
   /**
    * Handlers
@@ -28,11 +31,16 @@ export default function NewStory({ handleBack }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    let values = formValues;
-    values["date"] = currentDate;
-    setFormValues(values);
+    setFormValues({...formValues, ['date'] : currentDate()});
 
     console.log(formValues);
+    try {
+      postStory(formValues)
+    }
+    catch (error) {
+      console.log('error occurred while posting: ' + error);
+    }
+    
   };
 
   /**
@@ -43,9 +51,7 @@ export default function NewStory({ handleBack }) {
     let { name, value } = e.target;
     value = e.target.files ? e.target.files : e.target.value;
 
-    let values = formValues;
-    values[name] = value;
-    setFormValues(values);
+    setFormValues({...formValues, [name] : value});
     // console.log(URL.createObjectURL(formValues.imageFiles[0]));
   };
 
