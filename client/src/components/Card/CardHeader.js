@@ -7,12 +7,17 @@ function CardHeader({ images, cardOpened}) {
     
     let imagesURL = images;
     
-    var style = { 
-        backgroundImage: 'url(' + imagesURL[0] + ')',
-    };
+    if (images[0].filename) {
+        imagesURL = [];
+        
+        for (let url of images) {
+            imagesURL.push('/api/images/' + url.filename)
+        }
+    }
 
     return (
-        <header style={!cardOpened ? style : null} className="card-header">
+        <header className="card-header">
+            {!cardOpened && <img src={imagesURL[0]} alt="story"/>}
             {cardOpened && <Slideshow images={imagesURL}/>}
             <h4 className="card-header--title">story</h4>
         </header>

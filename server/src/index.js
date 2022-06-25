@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const multer = require('multer');
 
-
 app.use(express.json());
 
 
@@ -36,6 +35,8 @@ const stories = [
     date : '20/20/2022' 
   },
 ];
+
+app.use('/api/images/', express.static('./uploads/images'))
 
 app.get('/api/story', (req, res) => {
   res.send(stories);
