@@ -14,15 +14,15 @@ This project is in work.
 
 Displaying all saved stories on the home screen
 
-![home](./assets/home.jpg)
+![home](./images/home.jpg)
 
 Add a new story
 
-![mui form](./assets/form.jpg)
+![mui form](./images/form.jpg)
 
 View your stories
 
-![slide show](./assets/slides.jpg)
+![slide show](./images/slides.jpg)
 
 
 
