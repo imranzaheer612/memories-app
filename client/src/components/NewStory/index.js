@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "@mui/material/Button";
 import { Typography, Paper, Grid, CssBaseline } from "@material-ui/core";
@@ -17,13 +17,6 @@ export default function NewStory({ handleBack }) {
 
   const [formValues, setFormValues] = useState(defaultValues);
 
-  /**
-   * Story uploading date
-   */
-  const currentDate = () => {
-    let current = new Date();
-    return`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-  }
 
   /**
    * Handlers
@@ -31,19 +24,13 @@ export default function NewStory({ handleBack }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setFormValues({...formValues, ['date'] : currentDate()});
+    formValues['date'] = currentDate()
+    setFormValues(formValues);
 
-    console.log(formValues);
-    try {
-      postStory(formValues)
-    }
-    catch (error) {
-      console.log('error occurred while posting: ' + error);
-    }
-    
+    postData(event); 
   };
 
-  /**
+    /**
    * if event is file then value = filesList
    * else value = target.value
    */
@@ -52,8 +39,35 @@ export default function NewStory({ handleBack }) {
     value = e.target.files ? e.target.files : e.target.value;
 
     setFormValues({...formValues, [name] : value});
-    // console.log(URL.createObjectURL(formValues.imageFiles[0]));
   };
+
+  /**
+   * Post data to api
+   * */
+  const postData = (event) => {
+    try 
+    {
+      console.log(formValues);
+      postStory(formValues)
+      alert('Posted Successfully.');
+      event.target.reset();
+      setFormValues(defaultValues);
+    }
+    catch (error) 
+    {
+      console.log('error occurred while posting: ' + error);
+      alert('Some error occurred. Try Later.');
+    }
+  }
+
+  /**
+   * Story uploading date
+   */
+     const currentDate = () => {
+      let current = new Date();
+      return`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    }
+
 
   return (
     <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>

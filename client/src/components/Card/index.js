@@ -11,14 +11,12 @@ function Card({images, title, text, date}) {
     const handleCLick = (e) => {
         e.preventDefault();
         setOpened(true);
-        console.log('You clicked card: ' + isOpened );
     }
 
     const handleBack = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setOpened(false);
-        console.log('You clicked back: ' + isOpened );
     }
 
      

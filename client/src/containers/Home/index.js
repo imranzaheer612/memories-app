@@ -30,11 +30,8 @@ export default function Stories() {
             title={story.title}
             text={story.note}
           />
-        ))}
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+          ))
+        }
       </div>
     </>
   );
