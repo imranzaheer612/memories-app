@@ -8,9 +8,14 @@ This project is in work.
 
 * Material UI (used)
 * Redux (pending,  props drilling is used yet)
-* Backend (pending, will use mongo & node)
+* Backend (Node, Express, Mongodb)
+* Firebase used as middleware for uploading images
 
 ## Overview
+
+Home UI
+
+![home-ui](./images/home-ui.jpg)
 
 Displaying all saved stories on the home screen
 
@@ -23,6 +28,8 @@ Add a new story
 View your stories
 
 ![slide show](./images/slides.jpg)
+
+
 
 
 

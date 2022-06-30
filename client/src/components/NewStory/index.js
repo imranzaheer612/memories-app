@@ -24,7 +24,7 @@ export default function NewStory({ handleBack }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    formValues['date'] = currentDate()
+    formValues['date'] = currentDate();
     setFormValues(formValues);
 
     postData(event); 
@@ -38,7 +38,8 @@ export default function NewStory({ handleBack }) {
     let { name, value } = e.target;
     value = e.target.files ? e.target.files : e.target.value;
 
-    setFormValues({...formValues, [name] : value});
+    formValues[name] = value;
+    setFormValues(formValues);
   };
 
   /**
@@ -48,10 +49,11 @@ export default function NewStory({ handleBack }) {
     try 
     {
       console.log(formValues);
-      postStory(formValues)
-      alert('Posted Successfully.');
-      event.target.reset();
-      setFormValues(defaultValues);
+      postStory(formValues).then( done => {
+        alert('Posted Successfully.');
+        event.target.reset();
+        setFormValues(defaultValues);
+      })
     }
     catch (error) 
     {
