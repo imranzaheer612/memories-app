@@ -19,7 +19,7 @@ Home UI
 
 Displaying all saved stories on the home screen
 
-![home](./images/home.jpg)
+![home](./images/memories-ui.gif)
 
 Add a new story
 
