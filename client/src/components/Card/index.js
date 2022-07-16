@@ -2,6 +2,8 @@ import { useState } from "react"
 import CardBody from "./CardBody"
 import CardHeader from "./CardHeader"
 import './style.scss'
+import React from 'react'
+
 
 
 function Card({images, title, text, date}) {

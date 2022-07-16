@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "@mui/material/Button";
 import { Typography, Paper, Grid, CssBaseline } from "@material-ui/core";
@@ -45,20 +45,25 @@ export default function NewStory({ handleBack }) {
   /**
    * Post data to api
    * */
-  const postData = (event) => {
+  const postData = async (event) => {
     try 
     {
       console.log(formValues);
-      postStory(formValues).then( done => {
-        alert('Posted Successfully.');
-        event.target.reset();
-        setFormValues(defaultValues);
-      })
+      const res = await postStory(formValues)
+      
+      console.log(res.statusText);
+      console.log('Posted: ', res.data);
+      console.log('Posted: ', res);
+
+      alert('Posted Successfully.');
+      event.target.reset();
+      setFormValues(defaultValues);
+      
     }
     catch (error) 
     {
-      console.log('error occurred while posting: ' + error);
       alert('Some error occurred. Try Later.');
+      console.log('An error occurred while posting: ' + error);
     }
   }
 
@@ -126,7 +131,11 @@ export default function NewStory({ handleBack }) {
             </Grid>
 
             <Grid item style={{ marginTop: 16 }}>
-              <Button variant="contained" color="primary" type="submit">
+              <Button 
+                variant="contained" 
+                color="primary" 
+                type="submit"
+              >
                 Submit
               </Button>
             </Grid>

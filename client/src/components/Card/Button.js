@@ -1,4 +1,6 @@
 import './style.scss'
+import React from 'react'
+
 
 function Button({handleBack}) {
     return (

@@ -1,5 +1,6 @@
 import Slideshow from './SlideShow';
 import './style.scss'
+import React from 'react'
 
 
 function CardHeader({ images, cardOpened}) {

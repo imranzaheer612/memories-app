@@ -11,18 +11,12 @@ const postStory = async (postData) => {
         data.append('images', image)
     }
 
-    axios.post("/api/story", data, { 
-        // receive two    parameter endpoint url ,form data
-    })
-    .then(res => {
-        console.log(res.statusText)
-        console.log('Posted: ', res.data)
-        return
-    })
-    .catch((error) => {
-        throw Error(error.message);
-    });
-    
+    try {
+        return await axios.post("/api/story", data, {})
+    }
+    catch (e) {
+        throw new Error(e);
+    }
 }
 
 
