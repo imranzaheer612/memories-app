@@ -25,5 +25,5 @@ const storySchema = new mongoose.Schema(
   });
   
 
-const Story = mongoose.model('Course', storySchema);
+const Story = mongoose.model('stories', storySchema);
 module.exports = Story;

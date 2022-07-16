@@ -1,0 +1,12 @@
+{
+  "name": "memories",
+  "version": "1.0.0",
+  "description": "memories-app to save stories",
+  "main": "",
+  "scripts": {
+    "start": "npm start --prefix server",
+    "install-client": "cd client && npm install && npm run build && cd ..",
+    "install-server": "cd server && npm install && cd .. ",
+    "heroku-postbuild": "npm run install-client && npm run install-server"
+  }
+}

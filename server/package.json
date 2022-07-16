@@ -9,6 +9,7 @@
   "author": "imran",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "firebase": "^9.8.4",
