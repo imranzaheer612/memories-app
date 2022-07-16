@@ -1,11 +1,10 @@
 const stories = require('./routes/stories');
 const express = require('express');
 const app = express();
-const path = require('path');
-
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
+    const path = require('path');
 
     app.use(express.static('../../client/build'));
     app.get('*', (req, res) => {
