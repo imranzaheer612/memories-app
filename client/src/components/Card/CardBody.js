@@ -1,5 +1,4 @@
 import Button from "./Button"
-import React from 'react'
 import './style.scss'
 
 
@@ -13,7 +12,7 @@ function CardBody(props) {
         <div className="card-body">
             <p className="date">{props.date}</p>
             <h2>{props.title}</h2>
-            <p className="body-content">{truncate(props.text, 100)}</p>
+            <p className="body-content">{props.cardOpened ? props.text : truncate(props.text, 100)}</p>
             <Button handleBack={props.handleBack} />
         </div>
     )

@@ -26,7 +26,8 @@ function Card({images, title, text, date}) {
         title : title, 
         text : text, 
         date : date, 
-        handleBack : isOpened ? handleBack : void 0
+        handleBack : isOpened ? handleBack : void 0, 
+        cardOpened : isOpened
     }
 
     const headerProps = {
