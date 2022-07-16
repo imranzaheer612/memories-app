@@ -1,6 +1,7 @@
 const stories = require('./routes/stories');
 const express = require('express');
 const app = express();
+const path = require('path');
 
 
 // Server static assets if in production
