@@ -1,5 +1,5 @@
 {
-    "app_name": "memobook",
+    "app_name": "memobooks",
     
     "server_address": "https://intense-basin-91551.herokuapp.com", 
     "localhost_address": "http://localhost:4000", 
