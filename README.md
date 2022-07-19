@@ -1,19 +1,22 @@
 # Memories
 
-Building a react app helps you save your memories (stories)
+Building a MERN app that helps you save your memories (stories).
+
+
+You can **take a look** at the [memobooks.herokuapp.com](websitehttps://memobooks.herokuapp.com/)
 
 ## Description
 
-This project is in work. 
+Tools used build the project are listed here.
 
-* Material UI (used)
-* Redux (pending,  props drilling is used yet)
-* Backend (Node, Express, Mongodb)
-* Firebase used as middleware for uploading images
+* Material UI & SCSS.
+* Backend (Node, Express, Mongodb, Firebase, Multer).
+* Firebase is used as middleware for uploading images.
+* Viewport image rendering applied. 
 
 ## Overview
 
-Home UI
+Home UI showing all uploaded stories
 
 ![home-ui](./images/home-ui.jpg)
 
