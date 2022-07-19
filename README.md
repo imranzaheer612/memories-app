@@ -1,9 +1,9 @@
-# Memories
+# Memobooks
 
 Building a MERN app that helps you save your memories (stories).
 
 
-You can **take a look** at the [memobooks.herokuapp.com](websitehttps://memobooks.herokuapp.com/)
+You can **take a look** at the [https://memobooks.herokuapp.com/](https://memobooks.herokuapp.com/)
 
 ## Description
 
