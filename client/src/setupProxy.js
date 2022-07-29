@@ -1,10 +1,11 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-import configData from "./config.json";
+const config = require('./config.json');
 
 module.exports = function(app) {
+
   const api_url = 
   (process.env.NODE_ENV === 'production') ? 
-  configData.sever_address : configData.localhost_address;
+  config.sever_address : config.localhost_address;
   
   app.use(
     '/api',
