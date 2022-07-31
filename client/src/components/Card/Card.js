@@ -1,8 +1,9 @@
 import { useState, useRef } from "react"
 import CardBody from "./CardBody"
 import CardHeader from "./CardHeader"
-import './style.scss'
+import './card.scss'
 import { useInViewport } from 'react-in-viewport';
+import { useNavigate } from "react-router-dom"
 
 /**
  * Card for displaying story data
@@ -12,6 +13,7 @@ import { useInViewport } from 'react-in-viewport';
 
 function Card({images, title, text, date}) {
     
+    let navigate = useNavigate();
     let default_classes = {header: "card-header", body: ""};
     const [isOpened, setOpened] = useState(false)
     const [fullScreenClass, setFullScreenClass] = useState(default_classes);
@@ -31,7 +33,7 @@ function Card({images, title, text, date}) {
    
     const handleCLick = (e) => {
         e.preventDefault();
-        setOpened(true);
+        navigate('/story')
     }
 
     /**

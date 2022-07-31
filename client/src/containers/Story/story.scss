@@ -1,0 +1,21 @@
+.story-container--content {
+    width: 80%;
+    margin: auto;
+}
+
+.text-content {
+    background-color: aliceblue;
+    height: 100%;
+}
+
+.story-container {
+    height: 100%;
+
+    // display: flex;
+    // flex-direction: column;
+    // flex: 1 1 100%; 
+}
+
+.flex-item {
+    height: 50%;
+}

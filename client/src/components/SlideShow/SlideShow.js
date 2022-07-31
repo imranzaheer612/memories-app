@@ -1,7 +1,7 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-// import "./styles.css";
+import "./slideShow.scss";
 
 export default function SlideShow({ images }) {
   const properties = {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
 import Alert from '@mui/material/Alert';
 import Button from "@mui/material/Button";
-import { Typography, Paper, Grid, CssBaseline } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import { Typography, Paper, Grid, CssBaseline, TextField } from "@mui/material";
 import "./style.scss";
 
 import postStory from "../../services/stories/postStory";
@@ -10,7 +10,14 @@ import configData from "../../config.json";
 
 
 
-export default function NewStory({ handleBack }) {
+export default function NewStory() {
+  
+  let navigate = useNavigate()
+
+  const goBack = (e) => {
+    navigate(-1);
+  }
+
   const defaultValues = {
     title: "none",
     note: "none",
@@ -190,7 +197,7 @@ export default function NewStory({ handleBack }) {
                 variant="outlined"
                 color="secondary"
                 type="button"
-                onClick={handleBack}
+                onClick={goBack}
               >
                 Back
               </Button>

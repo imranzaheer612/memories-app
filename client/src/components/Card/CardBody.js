@@ -1,5 +1,5 @@
 import Button from "./Button"
-import './style.scss'
+import './card.scss'
 
 
 function CardBody(props) {
