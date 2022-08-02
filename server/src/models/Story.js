@@ -6,7 +6,8 @@ const storySchema = new mongoose.Schema(
     title: 
     {
       type: String,
-      required: true,
+      required: [true, 'A story must have a name'], 
+      maxlength: [40, 'A story name must have less or equal then 40 characters'],
     },
     
     note: String, 
@@ -20,7 +21,7 @@ const storySchema = new mongoose.Schema(
     date: 
     {
       type: String,
-      required: true,
+      required: [true, 'Must have a date on which story created.']
     },
   });
   

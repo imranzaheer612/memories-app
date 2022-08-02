@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
-import getStories from "../../services/stories/getStories";
+import { getAllStories } from "../../services/story";
 import { useNavigate } from "react-router-dom";
-import "./style.scss";
+import "./home.scss";
 
 export default function Home() {
 
@@ -19,29 +19,30 @@ export default function Home() {
      navigate('/home/newStory')
   }
 
-  const handleSignUp = (e) => {
+  const handleLogin = (e) => {
     setNavClicked(true);
-    navigate('/signup')
+    navigate('/login')
   }
 
   /**
    * fetching stories data on component mount
    */
   useEffect(() => {
-    getStories().then((data) => {
-      setStories(data);
-      console.log(data);
+    getAllStories().then((res) => {
+      setStories(res.data.stories);
+      console.log(res);
     });
   }, []);
 
   return (
     <>
-      <Navbar isClicked={navClicked} handleNewStory={handleNewStory} handleSignUp={handleSignUp}></Navbar>
+      <Navbar isClicked={navClicked} handleNewStory={handleNewStory} handleLogin={handleLogin}></Navbar>
       <div className={`stories-row ${navClicked ? 'hide--home' : ''}`}>
         {
         stories.map((story) => (
           <Card
-            key={story.id}
+            key={story._id}
+            id={story._id}
             images={story.images}
             date={story.date}
             title={story.title}

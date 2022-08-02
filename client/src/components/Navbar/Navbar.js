@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, Outlet } from "react-router-dom";
 
 import configData from "../../config.json";
-import "./Navbar.scss"
+import "./navbar.scss"
 
 
-function Navbar({isClicked, handleNewStory, handleSignUp}) {
+function Navbar({isClicked, handleNewStory, handleLogin}) {
 
   let navigate = useNavigate();
 
@@ -26,7 +26,7 @@ function Navbar({isClicked, handleNewStory, handleSignUp}) {
     <div className={`nav ${(isClicked) ? 'nav__opened' : ''}`}>
         <div className='nav__title'>{configData.app_name}</div>
         <button className="nav__button" onClick={handleNewStory}>Add Story</button>
-        <button className="nav__button" onClick={handleSignUp}>Sign Up</button>
+        <button className="nav__button" onClick={handleLogin}>Login</button>
 
         <Outlet/>
     </div>

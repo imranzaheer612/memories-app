@@ -9,7 +9,8 @@ import {
 import Home from './containers/Home';
 import SignUp from './containers/SignUp';
 import NewStory from './containers/NewStory';
-import Story from './containers/Story';
+import Post from './containers/Post';
+import Login from './containers/Login';
 
 import './App.css';
 
@@ -24,7 +25,8 @@ function App() {
                 <Route path="newStory" element={ <NewStory/> }/>
               </Route>
               
-              <Route path="/story" element={<Story />}/>
+              <Route path="/story/:id" element={<Post />}/>
+              <Route path="/login" element={<Login />}/>
               <Route path="/signup" element={<SignUp />}/>
             </Routes>
         </BrowserRouter>

@@ -1,20 +1,50 @@
-require('dotenv').config({ path: './src/config/.env' })
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+
+/**
+ * uncaught error handler for the app 
+ */
+process.on('uncaughtException', err => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
+dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-if (process.env.ENVIRONMENT  === "DEV") {
-    const cors = require('cors');
-    app.use(cors())
+
+
+if (process.env.ENVIRONMENT === 'DEV') {
+  const cors = require('cors');
+  app.use(cors());
 }
 
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL);
+/**
+ * Database connection
+*/
+DB = process.env.DATABASE_URL;
+mongoose.connect(DB);
 mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB');
+  console.log('Connected to MongoDB');
 });
 mongoose.connection.on('error', (error) => {
-    console.log(error);
+  console.log(error);
 });
 
+/**
+ * Start listening
+*/
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`App is running on port ${port}...`));
 
-const port = process.env.PORT;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
+process.on('unhandledRejection', err => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});

@@ -9,11 +9,11 @@ function CardBody(props) {
 	};
 
     return (
-        <div className={`card-body ${props.fullScreenClass.body}`}>
+        <div className={'card-body'}>
             <p className="date">{props.date}</p>
             <h2>{props.title}</h2>
-            <p className="body-content">{props.cardOpened ? props.text : truncate(props.text, 100)}</p>
-            <Button handleBack={props.handleBack} />
+            <p className="body-content">{truncate(props.text, 100)}</p>
+            <Button/>
         </div>
     )
 }

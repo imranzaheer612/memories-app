@@ -1,38 +1,56 @@
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { useNavigate } from "react-router-dom"
-import React from 'react'
+import { useNavigate, useParams } from "react-router-dom"
+import React, { useEffect } from 'react'
 import SlideShow from '../../components/SlideShow/SlideShow'
 import "./story.scss"
+import { getStory } from '../../services/story';
+import { useState } from 'react';
 
-function Story() {
-  let title = 'No Title Found!'; 
-  let text = 'no text found!';
-  let date = "null";
-  let images = ['https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg'];
-  
+function Post() {
+
+  let defaultPost = {
+    images : ['https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg'], 
+    title : 'No Title Found!', 
+    note : 'no text found!', 
+    date : "null"
+  }
+
   let navigate = useNavigate();
+  let { id } = useParams();
+
+  const [post, setPost] = useState(defaultPost)
+
+  /**
+   * fetching stories data on component mount
+   */
+   useEffect(() => {
+    getStory(id).then((res) => {
+      setPost(res.data.story);
+      console.log(res);
+    });
+  }, []);
+
   const goBack = () => {
     navigate(-1)
   }
 
   return (
     <div className='story-container'>
-
-      <SlideShow images={images}></SlideShow>
+      <SlideShow images={post.images.slice(1)}></SlideShow>
       
       <div className='flex-item text-content'>
         <div className='story-container--content'>
           <Typography variant="h6" gutterBottom component="div">
-            {title}
+            {post.title}
           </Typography>
 
           <Typography variant="caption" display="block" gutterBottom>
-          <Box sx={{ fontStyle: 'oblique', m: 1 }}>{`Date ${date}`}</Box>
+          <Box sx={{ fontStyle: 'oblique', m: 1 }}>{`Date ${post.date}`}</Box>
           </Typography>
 
           <Typography variant="body1" gutterBottom>
-            {text}
+            {post.note}
           </Typography>
       
         <Button 
@@ -53,4 +71,4 @@ function Story() {
   )
 }
 
-export default Story
+export default Post

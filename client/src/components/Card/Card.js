@@ -1,9 +1,9 @@
-import { useState, useRef } from "react"
 import CardBody from "./CardBody"
 import CardHeader from "./CardHeader"
-import './card.scss'
+import { useRef } from "react"
 import { useInViewport } from 'react-in-viewport';
 import { useNavigate } from "react-router-dom"
+import './card.scss'
 
 /**
  * Card for displaying story data
@@ -11,12 +11,9 @@ import { useNavigate } from "react-router-dom"
  * --> title & notes
 */
 
-function Card({images, title, text, date}) {
+function Card({images, title, text, date, id}) {
     
     let navigate = useNavigate();
-    let default_classes = {header: "card-header", body: ""};
-    const [isOpened, setOpened] = useState(false)
-    const [fullScreenClass, setFullScreenClass] = useState(default_classes);
     
     /**
      * viewport configuration for viewport rendering
@@ -28,35 +25,12 @@ function Card({images, title, text, date}) {
         inViewport,
         enterCount,
         leaveCount,
-     } = useInViewport(myRef, config = { disconnectOnLeave: false },);
-
+    } = useInViewport(myRef, config = { disconnectOnLeave: false },);
    
+
     const handleCLick = (e) => {
         e.preventDefault();
-        navigate('/story')
-    }
-
-    /**
-     * when fullscreen icon click
-     * header & body classes changes as "fullScreenClass"
-    */
-    const handleFullScreen = (e) => {
-        if (fullScreenClass.header === default_classes.header) {
-            setFullScreenClass({header: 'card-header__fullscreen', body: 'card-body__fullscreen'})
-        }
-        else {
-            setFullScreenClass(default_classes);
-        }
-        console.log(fullScreenClass)
-    }
-
-    /**
-     * handler for going back
-    */
-    const handleBack = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setOpened(false);
+        navigate(`/story/${id}`)
     }
 
     /**
@@ -65,22 +39,16 @@ function Card({images, title, text, date}) {
     const bodyProps = {
         title : title, 
         text : text, 
-        date : date, 
-        handleBack : isOpened ? handleBack : void 0, 
-        cardOpened : isOpened, 
-        fullScreenClass: fullScreenClass
+        date : date,
     }
 
     const headerProps = {
-        images : ((images.length && inViewport) ? images : Card.defaultProps.images),
-        cardOpened : isOpened, 
-        handleFullScreen: handleFullScreen, 
-        fullScreenClass: fullScreenClass
-
+        // images : ((images.length && inViewport) ? images : Card.defaultProps.images),
+        images : ((images.length ) ? images : Card.defaultProps.images),
     }
 
     return ( 
-        <div ref={myRef} className={`card ${isOpened ? 'card--clicked' : ''}`} onClick={handleCLick}>
+        <div ref={myRef} className={'card'} onClick={handleCLick}>
             <CardHeader {...headerProps} />
             <CardBody {...bodyProps}/>  
         </div>

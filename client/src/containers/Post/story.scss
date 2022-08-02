@@ -1,0 +1,19 @@
+.story-container--content {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.text-content {
+    background-color: aliceblue;
+}
+
+.story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100vh;
+}
+
+.story-container > div {
+    flex: 1 0 auto;
+}

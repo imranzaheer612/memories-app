@@ -3,9 +3,9 @@ import Alert from '@mui/material/Alert';
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { Typography, Paper, Grid, CssBaseline, TextField } from "@mui/material";
-import "./style.scss";
+import "./newStory.scss";
 
-import postStory from "../../services/stories/postStory";
+import { postStory } from "../../services/story";
 import configData from "../../config.json";
 
 

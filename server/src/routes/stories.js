@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-const { postStory, getStories } = require('../controllers/stories');
+const storyController = require('../controllers/storiesController');
 const { uploadImages } = require('../middleware/firebaseStorage');
 const getImages = require('../middleware/multer');
 
 router
     .route('/')
-    .get(getStories)
-    .post([getImages, uploadImages], postStory);
+    .get(storyController.getAllStories)
+    .post([getImages, uploadImages], storyController.createStory);
+
+router
+    .route('/:id')
+    .get(storyController.getStory)
+    .delete(storyController.deleteStory);
+    // .patch(tourController.updateTour)
+  
 
 module.exports = router;
