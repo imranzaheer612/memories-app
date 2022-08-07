@@ -6,23 +6,22 @@ import { useNavigate } from "react-router-dom";
 import "./home.scss";
 
 export default function Home() {
-
   let navigate = useNavigate();
   const [stories, setStories] = useState([]);
-  const [navClicked, setNavClicked] = useState(false)
+  const [navClicked, setNavClicked] = useState(false);
 
   /**
    * event handlers
-  */
-   const handleNewStory = (e) => {
+   */
+  const handleNewStory = (e) => {
     setNavClicked(true);
-     navigate('/home/newStory')
-  }
+    navigate("/home/newStory");
+  };
 
   const handleLogin = (e) => {
     setNavClicked(true);
-    navigate('/login')
-  }
+    navigate("/login");
+  };
 
   /**
    * fetching stories data on component mount
@@ -36,10 +35,13 @@ export default function Home() {
 
   return (
     <>
-      <Navbar isClicked={navClicked} handleNewStory={handleNewStory} handleLogin={handleLogin}></Navbar>
-      <div className={`stories-row ${navClicked ? 'hide--home' : ''}`}>
-        {
-        stories.map((story) => (
+      <Navbar
+        isClicked={navClicked}
+        handleNewStory={handleNewStory}
+        handleLogin={handleLogin}
+      ></Navbar>
+      <div className={`stories-row ${navClicked ? "hide--home" : ""}`}>
+        {stories.map((story) => (
           <Card
             key={story._id}
             id={story._id}
@@ -48,8 +50,7 @@ export default function Home() {
             title={story.title}
             text={story.note}
           />
-          ))
-        }
+        ))}
       </div>
     </>
   );
