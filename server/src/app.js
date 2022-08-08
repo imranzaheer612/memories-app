@@ -17,18 +17,6 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 /**
- * Setting for heroku deployment
- * Server static assets if in production
- */
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../client/build')));
-
-  app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
-  });
-}
-
-/**
  * Global Middleware
  */
 
@@ -42,7 +30,6 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(morgan('dev'));
 
 // Limit requests from same API
 const limiter = rateLimit({
@@ -50,6 +37,7 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP, please try again in an hour!',
 });
+
 app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
@@ -81,9 +69,21 @@ app.use(
 app.use('/api/story', storiesRouter);
 app.use('/api/users', userRouter);
 
-app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-});
+// app.all('*', (req, res, next) => {
+//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+// });
+
+/**
+ * Setting for heroku deployment
+ * Server static assets if in production
+ */
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../client/build')));
+
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client/build/index.html'));
+  });
+}
 
 app.use(globalErrorHandler);
 
