@@ -39,8 +39,8 @@ app.use(
         fontSrc: ["'self'", 'https://*.com', 'data:'],
       },
     },
-    crossOriginResourcePolicy: false,
     crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
   })
 );
 
