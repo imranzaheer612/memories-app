@@ -33,9 +33,13 @@ app.use(
           "'unsafe-inline'",
           'https://memobooks.herokuapp.com/',
         ],
-        styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-        imgSrc: ["'self'", 'https://firebasestorage.googleapis.com/'],
-        fontSrc: ["'self'", 'https://*.com', 'data:'],
+        'style-src': [
+          "'self'",
+          'https://fonts.googleapis.com',
+          "'unsafe-inline'",
+        ],
+        'img-src': ["'self'", 'https://firebasestorage.googleapis.com/'],
+        'font-src': ["'self'", 'https://*.com', 'data:'],
       },
     },
   })
