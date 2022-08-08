@@ -21,7 +21,11 @@ const app = express();
  */
 
 // Set security HTTP headers
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 // cookie parsing
 app.use(cookieParser());
