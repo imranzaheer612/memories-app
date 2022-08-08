@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
+const authController = require('../controllers/authController');
 const storyController = require('../controllers/storyController');
 const { uploadImages } = require('../middleware/firebaseStorage');
 const getImages = require('../middleware/multer');
@@ -9,7 +10,11 @@ const getImages = require('../middleware/multer');
 router
   .route('/')
   .get(storyController.getAllStories)
-  .post([getImages, uploadImages], storyController.createStory);
+  .post(
+    authController.protect,
+    [getImages, uploadImages],
+    storyController.createStory
+  );
 
 router
   .route('/:id')

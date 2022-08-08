@@ -9,6 +9,7 @@ export default function Home() {
   let navigate = useNavigate();
   const [stories, setStories] = useState([]);
   const [navClicked, setNavClicked] = useState(false);
+  const [user, setUser] = useState("");
 
   /**
    * event handlers
@@ -27,6 +28,11 @@ export default function Home() {
    * fetching stories data on component mount
    */
   useEffect(() => {
+    const userItem = JSON.parse(localStorage.getItem("user"));
+    if (userItem) {
+      setUser(userItem);
+    }
+
     getAllStories().then((res) => {
       setStories(res.data.stories);
       console.log(res);
@@ -39,6 +45,7 @@ export default function Home() {
         isClicked={navClicked}
         handleNewStory={handleNewStory}
         handleLogin={handleLogin}
+        user={user}
       ></Navbar>
       <div className={`stories-row ${navClicked ? "hide--home" : ""}`}>
         {stories.map((story) => (
