@@ -23,8 +23,14 @@ const app = express();
 // Set security HTTP headers
 app.use(
   helmet({
-    contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        'script-src': ["'self'", "'unsafe-inline'", 'example.com'],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+    // crossOriginResourcePolicy: false,
   })
 );
 
@@ -74,9 +80,9 @@ app.use(
 app.use('/api/story', storiesRouter);
 app.use('/api/users', userRouter);
 
-// app.all('*', (req, res, next) => {
-//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-// });
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
 
 /**
  * Setting for heroku deployment
