@@ -21,17 +21,33 @@ const app = express();
  */
 
 // Set security HTTP headers
+
 app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        'script-src': ["'self'", "'unsafe-inline'", 'example.com'],
-      },
+  helmet.contentSecurityPolicy({
+    useDefaults: false,
+    'block-all-mixed-content': true,
+    'upgrade-insecure-requests': true,
+    directives: {
+      'default-src': ["'self'"],
+      'base-uri': "'self'",
+      'font-src': ["'self'", 'https:', 'data:'],
+      'frame-ancestors': ["'self'"],
+      'img-src': ["'self'", 'data:'],
+      'object-src': ["'none'"],
+      'script-src': ["'self'", 'https://cdnjs.cloudflare.com'],
+      'script-src-attr': "'none'",
+      'style-src': ["'self'", 'https://cdnjs.cloudflare.com'],
     },
-    crossOriginEmbedderPolicy: false,
-    // crossOriginResourcePolicy: false,
-  })
+  }),
+
+  helmet.dnsPrefetchControl({ allow: true }),
+  helmet.frameguard({ action: 'deny' }),
+  helmet.hidePoweredBy(),
+  helmet.hsts({ maxAge: 123456, includeSubDomains: false }),
+  helmet.ieNoOpen(),
+  helmet.noSniff(),
+  helmet.referrerPolicy({ policy: ['origin', 'unsafe-url'] }),
+  helmet.xssFilter()
 );
 
 // cookie parsing
