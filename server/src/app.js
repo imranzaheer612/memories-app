@@ -8,7 +8,7 @@ const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
-// const AppError = require('./utils/appError');
+const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
 const storiesRouter = require('./routes/storyRoutes');
@@ -69,9 +69,9 @@ app.use(
 app.use('/api/story', storiesRouter);
 app.use('/api/users', userRouter);
 
-// app.all('*', (req, res, next) => {
-//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-// });
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
 
 /**
  * Setting for heroku deployment
