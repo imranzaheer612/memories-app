@@ -21,34 +21,27 @@ const app = express();
  */
 
 // Set security HTTP headers
-
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: false,
-//     'block-all-mixed-content': true,
-//     'upgrade-insecure-requests': true,
-//     directives: {
-//       'default-src': ["'self'"],
-//       'base-uri': "'self'",
-//       'font-src': ["'self'", 'https:', 'data:'],
-//       'frame-ancestors': ["'self'"],
-//       'img-src': ["'self'", 'data:'],
-//       'object-src': ["'none'"],
-//       'script-src': ["'self'", 'https://cdnjs.cloudflare.com'],
-//       'script-src-attr': "'none'",
-//       'style-src': ["'self'", 'https://cdnjs.cloudflare.com'],
-//     },
-//   }),
-
-//   helmet.dnsPrefetchControl({ allow: true }),
-//   helmet.frameguard({ action: 'deny' }),
-//   helmet.hidePoweredBy(),
-//   helmet.hsts({ maxAge: 123456, includeSubDomains: false }),
-//   helmet.ieNoOpen(),
-//   helmet.noSniff(),
-//   helmet.referrerPolicy({ policy: ['origin', 'unsafe-url'] }),
-//   helmet.xssFilter()
-// );
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        blockAllMixedContent: [],
+        fontSrc: ["'self'", 'https:', 'data:'],
+        frameAncestors: ["'self'", 'https://accounts.google.com/'],
+        frameSrc: ["'self'", 'https://accounts.google.com/'],
+        imgSrc: ["'self'", 'data:'],
+        objectSrc: ["'self'", 'blob:'],
+        mediaSrc: ["'self'", 'blob:', 'data:'],
+        scriptSrc: ["'self'", 'https://apis.google.com'],
+        scriptSrcAttr: ["'none'"],
+        styleSrc: ["'self'", 'https:', "'unsafe-inline'"],
+        upgradeInsecureRequests: [],
+        connectSrc: ["'self'", 'https://memobooks.herokuapp.com'],
+      },
+    },
+  })
+);
 
 // cookie parsing
 app.use(cookieParser());
