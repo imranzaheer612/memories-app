@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "name": "memories-api",
   "version": "1.0.0",
