@@ -22,26 +22,26 @@ const app = express();
 
 // Set security HTTP headers
 
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: [
-//           "'self'",
-//           "'unsafe-inline'",
-//           'https://memobooks.herokuapp.com/',
-//           'https://firebasestorage.googleapis.com/',
-//         ],
-//         styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
-//         imgSrc: ["'self'", 'https://firebasestorage.googleapis.com/'],
-//         fontSrc: ["'self'", 'https://*.com', 'data:'],
-//       },
-//     },
-//     crossOriginEmbedderPolicy: false,
-//     crossOriginResourcePolicy: { policy: 'cross-origin' },
-//   })
-// );
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          'https://memobooks.herokuapp.com/',
+          'https://firebasestorage.googleapis.com/',
+        ],
+        styleSrc: ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+        imgSrc: ["'self'", 'https://firebasestorage.googleapis.com/'],
+        fontSrc: ["'self'", 'https://*.com', 'data:'],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 
 // cookie parsing
 app.use(cookieParser());
