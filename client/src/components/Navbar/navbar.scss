@@ -71,11 +71,26 @@
         justify-content: center;
 
         .nav__title {
-            width: 100%;
+            margin: auto;
         }
+    }
+
+    .nav__button {
+        width: 70%;
     }
 
     .nav__opened {
         height: 100%;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+
+    .nav {
+        height: 160px;
+    }
+
+    .nav__button {
+        width: 50%;
     }
 }

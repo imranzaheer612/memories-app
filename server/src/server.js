@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors');
 
 /**
  * uncaught error handler for the app
@@ -13,10 +12,6 @@ process.on('uncaughtException', (err) => {
 
 dotenv.config({ path: './config.env' });
 const app = require('./app');
-
-if (process.env.ENVIRONMENT === 'DEV') {
-  app.use(cors());
-}
 
 /**
  * Database connection

@@ -9,12 +9,12 @@
   padding: 90px 10px;
   align-content: space-between;
 
-  > div {
+  >div {
     margin: 20px 15px;
     flex: 1 1 300px;
   }
 
-  > div:first-child {
+  >div:first-child {
     flex-grow: 10;
     flex-basis: 500px;
   }
@@ -26,6 +26,12 @@
 
 @media only screen and (max-width: 530px) {
   .stories-row {
-    padding-top: 130px;
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  .stories-row {
+    margin-top: 80px;
   }
 }

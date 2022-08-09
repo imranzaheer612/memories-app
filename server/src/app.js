@@ -7,8 +7,8 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
-// const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
 const storiesRouter = require('./routes/storyRoutes');
@@ -49,6 +49,7 @@ app.use(cookieParser());
 // Use morgan for logging requests
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
+  app.use(cors());
 }
 
 // Limit requests from same API

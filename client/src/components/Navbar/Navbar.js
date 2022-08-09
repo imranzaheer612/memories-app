@@ -33,7 +33,7 @@ function Navbar({ isClicked, handleNewStory, handleLogin, user }) {
           <button className="nav__button" onClick={handleNewStory}>
             Add Story
           </button>
-          <ProfileMenu user={user}></ProfileMenu>
+          {!isClicked && <ProfileMenu user={user}></ProfileMenu>}
         </>
       )}
 
