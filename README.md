@@ -11,8 +11,9 @@ Tools used build the project are listed here.
 
 * Material UI & SCSS.
 * Backend (Node, Express, Mongodb, Firebase, Multer).
+* Heroku for Deployment
 * Firebase is used as middleware for uploading images.
-* Viewport image rendering applied. 
+* Viewport image rendering applied.
 
 ## Overview
 
@@ -26,12 +27,19 @@ Displaying all saved stories on the home screen
 
 Add a new story
 
-![mui form](./images/form.jpg)
+![mui form](./images/add-story.jpg)
 
 View your stories
 
-![slide show](./images/slides.jpg)
+![slide show](./images/story-view.jpg)
 
+![slide show](./images/story-view2.jpg)
+
+Authentication Pages
+
+![auth](./images/login.jpg)
+
+![auth](./images/signup.jpg)
 
 
 
