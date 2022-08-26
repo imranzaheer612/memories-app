@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "node src/server.js", 
-    "start:dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js", 
+    "debug": "ndb src/server.js"
   },
   "name": "memories-api",
   "version": "1.0.0",
@@ -25,6 +26,7 @@
     "mongoose": "^6.4.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "ndb": "^1.1.5",
     "nodemailer": "^6.7.7",
     "tslib": "^2.4.0",
     "xss-clean": "^0.1.1"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
-import { getAllStories } from "../../services/story";
+import { getAllStories } from "../../services/stories.service";
 import { useNavigate } from "react-router-dom";
 import "./home.scss";
 
@@ -34,7 +34,7 @@ export default function Home() {
     }
 
     getAllStories().then((res) => {
-      setStories(res.data.stories);
+      setStories(res.data.data);
       console.log(res);
     });
   }, []);

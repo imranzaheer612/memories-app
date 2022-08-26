@@ -42,7 +42,7 @@ const uploadImages = catchAsync(async (req, res, next) => {
     await uploadImage(imageRef, file.buffer, fileName, urlsArray);
   }
 
-  req.imageUrls = urlsArray;
+  req.body.images = urlsArray;
   next();
 });
 

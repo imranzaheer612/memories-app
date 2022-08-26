@@ -4,7 +4,7 @@ import axios from "axios";
  * Fetching all stories for the home page
  */
 export async function getAllStories() {
-  const response = await fetch("/api/story", { credentials: "include" });
+  const response = await fetch("/api/stories", { credentials: "include" });
 
   if (!response.ok) {
     const message = `An error has occurred: ${response.status}`;
@@ -19,7 +19,7 @@ export async function getAllStories() {
  * Fetching story for only a single post based on id
  */
 export async function getStory(id) {
-  const response = await fetch(`/api/story/${id}`);
+  const response = await fetch(`/api/stories/${id}`);
 
   if (!response.ok) {
     const message = `An error has occurred: ${response.status}`;
@@ -45,8 +45,9 @@ export const postStory = async (postData) => {
   }
 
   try {
-    return await axios.post("/api/story", data, {});
+    return await axios.post("/api/stories", data, {});
   } catch (e) {
+    console.log(e);
     throw new Error(e);
   }
 };

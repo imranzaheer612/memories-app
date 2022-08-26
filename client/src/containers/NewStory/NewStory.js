@@ -1,22 +1,19 @@
 import React, { useState } from "react";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { Typography, Paper, Grid, CssBaseline, TextField } from "@mui/material";
 import "./newStory.scss";
 
-import { postStory } from "../../services/story";
+import { postStory } from "../../services/stories.service";
 import configData from "../../config.json";
 
-
-
 export default function NewStory() {
-  
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const goBack = (e) => {
     navigate(-1);
-  }
+  };
 
   const defaultValues = {
     title: "none",
@@ -26,31 +23,30 @@ export default function NewStory() {
   };
 
   const uploadingStates = {
-    success : "success",
-    error : "error",
-    none : "none",
-    uploading : "uploading"
-  }
+    success: "success",
+    error: "error",
+    none: "none",
+    uploading: "uploading",
+  };
 
   const [formValues, setFormValues] = useState(defaultValues);
   const [uploading, setUploading] = useState(uploadingStates.none);
   const [imgNames, setImgNames] = useState([]);
 
-
   /**
    * Handlers
-  */
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    formValues['date'] = currentDate();
+    formValues["date"] = currentDate();
     setFormValues(formValues);
 
-    setUploading(uploadingStates.uploading)
-    postData(event); 
+    setUploading(uploadingStates.uploading);
+    postData(event);
   };
 
-    /**
+  /**
    * if event is file then value = filesList
    * else value = target.value
    */
@@ -76,36 +72,33 @@ export default function NewStory() {
    * Post data to api
    * */
   const postData = async (event) => {
-    try 
-    {
+    try {
       console.log(formValues);
-      const res = await postStory(formValues)
-      
-      console.log(res.statusText);
-      console.log('Posted: ', res.data);
-      console.log('Posted: ', res);
+      const res = await postStory(formValues);
 
-      setUploading(uploadingStates.success)
+      console.log(res.statusText);
+      console.log("Posted: ", res.data);
+      console.log("Posted: ", res);
+
+      setUploading(uploadingStates.success);
       event.target.reset();
       setFormValues(defaultValues);
       setImgNames([]);
-      
+    } catch (error) {
+      setUploading(uploadingStates.error);
+      console.log("An error occurred while posting: " + error);
     }
-    catch (error) 
-    {
-      setUploading(uploadingStates.error)
-      console.log('An error occurred while posting: ' + error);
-    }
-  }
+  };
 
   /**
    * Story uploading date
    */
-     const currentDate = () => {
-      let current = new Date();
-      return`${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-    }
-
+  const currentDate = () => {
+    let current = new Date();
+    return `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
+  };
 
   return (
     <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
@@ -144,50 +137,55 @@ export default function NewStory() {
 
             <Grid item xs={12}>
               <label htmlFor="contained-button-file">
-                <Button variant="contained" component="span"  onChange={handleInputChange}>
-                <input
-                  required
-                  name="imageFiles"
-                  accept="image/*"
-                  id="contained-button-file"
-                  multiple
-                  type="file"
-                  hidden
+                <Button
+                  variant="contained"
+                  component="span"
                   onChange={handleInputChange}
-                />Select images
+                >
+                  <input
+                    required
+                    name="imageFiles"
+                    accept="image/*"
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                    hidden
+                    onChange={handleInputChange}
+                  />
+                  Select images
                 </Button>
               </label>
-              <br/>
+              <br />
               <span>
                 <ol>
-                {imgNames.map((name, index) => 
-                  <li key={index}>{name}</li>
-                )}
+                  {imgNames.map((name, index) => (
+                    <li key={index}>{name}</li>
+                  ))}
                 </ol>
               </span>
               {/* <img src={URL.createObjectURL(formValues.imageFiles[0])} alt='img-preview'></img> */}
             </Grid>
-            
-            { 
-            uploading !== uploadingStates.none &&
-            <Grid item xs={12}>
-              {uploading === uploadingStates.error &&
-              <Alert severity="error">Some error occurred. Try Later.</Alert>}
-              
-              {uploading === uploadingStates.uploading && 
-              <Alert severity="info">Uploading data. Please wait!</Alert>}
-              
-              {uploading === uploadingStates.success && 
-              <Alert severity="success">Posted Successfully!</Alert>}
-            </Grid>
-            }
+
+            {uploading !== uploadingStates.none && (
+              <Grid item xs={12}>
+                {uploading === uploadingStates.error && (
+                  <Alert severity="error">
+                    Some error occurred. Try Later.
+                  </Alert>
+                )}
+
+                {uploading === uploadingStates.uploading && (
+                  <Alert severity="info">Uploading data. Please wait!</Alert>
+                )}
+
+                {uploading === uploadingStates.success && (
+                  <Alert severity="success">Posted Successfully!</Alert>
+                )}
+              </Grid>
+            )}
 
             <Grid item style={{ marginTop: 16 }}>
-              <Button 
-                variant="contained" 
-                color="primary" 
-                type="submit"
-              >
+              <Button variant="contained" color="primary" type="submit">
                 Submit
               </Button>
             </Grid>
