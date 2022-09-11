@@ -8,11 +8,11 @@ You can **take a look** at the [https://memobooks.herokuapp.com/](https://memobo
 
 Tools used build the project are listed here.
 
-- Material UI & SCSS.
+- Frontend React, Material UI & SCSS.
 - Backend (Node, Express, MongoDB, Firebase, Multer).
+- JWT Authentication
 - Heroku for Deployment
 - Firebase is used as middleware for uploading images.
-- Viewport image rendering applied.
 
 ## Overview
 
